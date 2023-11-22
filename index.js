@@ -10,7 +10,8 @@ const taskModal = document.querySelector(".task__modal_body");
 //Templet for card on the screen
 const htmlTaskContent = ({id, url, title, type, description}) => `
     <div class="col-md-6 col-lg-4 mt-3" id=${id} key=${id}>
-        <div class="card shadow-sm task_contents">
+        <div class="card shadow-sm task__card">
+
             <div class="card-header d-flex justify-content-end task__card_header">
                 <button type="button" class="btn btn-outline-info mr-2" name=${id}>
                     <i class="fas fa-pencil-alt" name=${id}></i>
@@ -25,7 +26,7 @@ const htmlTaskContent = ({id, url, title, type, description}) => `
                     url &&
                     `<img width="100%" src=${url} alt="card img" class="card-img-top md-3 rounded-lg" />`
                 }
-                <h5 class="cardd-title task__card_title">${title}</h5>
+                <h5 class="card-title task__card__title">${title}</h5>
                 <p class="description trim-3-lines text-muted">${description}</p>
                 <div class="tags text-white d-flex flex-wrap">
                     <span class="badge bg-primary m-1">${type}</span>
@@ -46,7 +47,7 @@ const htmlModalContent = ({id, url, title, description}) => {
         <div id=${id}>
             ${
                 url && 
-                `<img width="100%" src=${url} alt="modal img" class="img-fluid mb-3" />`
+                `<img width="100%" src=${url} alt="card img" class="img-fluid place__holder__image mb-3" />`
             }
             <strong class="text-muted text-sm">Created on : ${date.toDateString()}</strong>
             <h2 class="my-3">${title}</h2>
@@ -67,14 +68,19 @@ const updateLocalStorage = () => {
 
 //convert STRING > JSON for rendering the cards on the screen
 const loadInitialData = () => {
-    const localStoragecopy = JSON.parse(localStorage.task); //method to convert STRING > JSON
+    if(localStorage.task === undefined) {return JSON.stringify({tasks: state.taskList})}
+    const localStorageCopy = JSON.parse(localStorage.task); //method to convert STRING > JSON
 
     // check if localStorageCopy have some value
-    if(localStoragecopy) state.taskList = localStoragecopy.tasks;
+    if(localStorageCopy) {
+        state.taskList = localStorageCopy.tasks;
+    }
 
     // now MAP the taskList[] accordingly
-    state.taskList.map((cardDate) => {
-        taskContent.insertAdjacentHTML("beforeend", htmlTaskContent(cardDate));
+    state.taskList.map(({cardDate}) => {
+        if (taskContent) { // Check if taskContent is not null
+          taskContent.insertAdjacentHTML("beforeend", htmlTaskContent({cardDate}));
+        }
     });
 };
 
@@ -86,12 +92,16 @@ const handleSubmit = (event) => {
         url: document.getElementById("imgURL").value,
         title: document.getElementById("taskTitle").value,
         tags: document.getElementById("tags").value,
-        taskDescription: document.getElementById("taskDescription").value
+        taskDescription: document.getElementById("taskDescription").value,
     };
-    taskContent.insertAdjacentHTML(
-        "beforeend",
-        htmlTaskContent({...input, id})
-    );
+
+    if(taskContent){
+        taskContent.insertAdjacentHTML(
+            "beforeend",
+            htmlTaskContent({...input, id})
+        );
+    }
+    
     state.taskList.push({...input, id});
     updateLocalStorage();
 };
