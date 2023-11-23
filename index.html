@@ -29,11 +29,11 @@
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="addNewModal">Add New Task</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="addNewModal">Add New Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body task__modal_body">
-                <form>
+                <form onsubmit="return false">
                     <!-- for img -->
                     <div class="mb-3">
                       <label for="imgURL" class="form-label">Image URL</label>
@@ -58,7 +58,6 @@
                         <label for="taskDescription" class="form-label">Task Description</label>
                         <textarea type="text" rows="3" class="form-control" placeholder="Task Description..." id="taskDescription" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -77,9 +76,7 @@
               <h5 class="modal-title" id="exampleModalLabel">Task Details</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body task__modal_body">
-              ...
-            </div>
+            <div class="modal-body task__modal_body"></div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
@@ -120,7 +117,7 @@
         <section class="mt-5">
             <div class="row justify-content-center">
                 <div class="col-sm-12 col-md-6">
-                    <div class="input-group shadow">
+                    <div class="input-group flex-nowrap shadow-lg rounded">
                         <input type="search"
                             class="form-control"
                             placeholder="Search your Task here ..."
@@ -136,34 +133,9 @@
         </section>
 
         <!-- Cards section -->
-        <!-- <section class="mt-3">
-            <div class="row justify-content-around task_contents">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </section> -->
+        <section class="mt-3">
+            <div class="row justify-content-lg-start task_contents"></div>
+        </section>
     </div>
 
     <script src="index.js"></script>
