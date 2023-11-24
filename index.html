@@ -18,18 +18,18 @@
     referrerpolicy="no-referrer" />
 </head>
 <body onload="loadInitialData()">
-    <div class="small__screen_btn d-sm-block d-md-none d-grid col-12 position-fixed bottom-0 z-1">
+    <!-- <div class="small__screen_btn d-sm-block d-md-none d-grid col-12 position-fixed bottom-0 z-1">
         <button class="btn btn-primary d-flex justify-content-center align-items-center gap-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#addNewModal" type="submit">
             <i class="fa-light fa-plus"></i>Add New Item
         </button>
-    </div>
+    </div> -->
 
     <!-- Modal for Add Item -->
     <div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addNewModal">Add New Task</h5>
+                <h5 class="modal-title" id="addNewModalLabel">Tasks</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body task__modal_body">
@@ -69,7 +69,7 @@
     </div>
 
     <!-- Modal for open task -->
-    <div class="modal fade" id="showTask" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -82,13 +82,13 @@
             </div>
           </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- NavBar & SearchBox Section -->
+    <!-- NavBar Section -->
     <section>
-        <nav class="navbar navbar-expand-lg bg-light px-lg-5 mt-2">
+        <nav class="navbar navbar-expand-lg bg-light rounded-5 px-lg-5 mt-2">
             <div class="container-fluid">
-            <a class="navbar-brand" href="#">TaskyBuild</a>
+            <a class="navbar-brand fs-4" href="#">_NoteBuild__</a>
             <button class="navbar-toggler" 
             type="button" 
             data-bs-toggle="collapse" 
@@ -100,9 +100,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
+                </li> -->
                 </ul>
                 <button class="btn btn-primary d-flex align-items-center gap-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#addNewModal" type="submit">
                     <i class="fa-light fa-plus"></i>Add New Item
@@ -123,6 +123,7 @@
                             placeholder="Search your Task here ..."
                             aria-label="Search Task"
                             arial-describedby="addon-wrapping"
+                            oninput="searchTask()"
                         />
                         <span class="input-group-text" id="addon-wrapping">
                             <i class="fas fa-search"></i>
